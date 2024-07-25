@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theme Toggler - by Jean Medeiros</title>
+
+    <script>
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else if (localStorage.getItem("theme") === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="border-2 rounded-lg p-8">
+      <div class="flow">
+        <h1 class="text-center">Theme Toggler</h1>
+
+        <h2>Button</h2>
+
+        <button id="theme-toggler" class="button">Click me!</button>
+
+        <div class="absolute inset-0 -z-10 pointer-events-none">
+          <img
+            src="/src/assets/pattern.png"
+            alt=""
+            style="filter: invert(var(--theme-invert))"
+          />
+        </div>
+
+        <h2>Paragraph</h2>
+
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae
+          architecto amet qui perferendis aperiam, pariatur, animi, ratione ipsa
+          natus aliquam eveniet consequatur atque dicta impedit vero
+          dignissimos. Voluptatum, commodi! Consectetur.
+        </p>
+
+        <h2>List</h2>
+
+        <ul class="flex gap-4">
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5em"
+              height="1.5em"
+              viewBox="0 0 256 256"
+            >
+              <path
+                fill="currentColor"
+                d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m8 191.63V152h24a8 8 0 0 0 0-16h-24v-24a16 16 0 0 1 16-16h16a8 8 0 0 0 0-16h-16a32 32 0 0 0-32 32v24H96a8 8 0 0 0 0 16h24v63.63a88 88 0 1 1 16 0"
+              />
+            </svg>
+          </li>
+
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5em"
+              height="1.5em"
+              viewBox="0 0 256 256"
+            >
+              <path
+                fill="currentColor"
+                d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48m0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32m48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56m40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12"
+              />
+            </svg>
+          </li>
+
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5em"
+              height="1.5em"
+              viewBox="0 0 256 256"
+            >
+              <path
+                fill="currentColor"
+                d="M216 24H40a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m0 192H40V40h176zM96 112v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0m88 28v36a8 8 0 0 1-16 0v-36a20 20 0 0 0-40 0v36a8 8 0 0 1-16 0v-64a8 8 0 0 1 15.79-1.78A36 36 0 0 1 184 140m-84-56a12 12 0 1 1-12-12a12 12 0 0 1 12 12"
+              />
+            </svg>
+          </li>
+        </ul>
+
+        <h2>Form</h2>
+
+        <form>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="name" class="sr-only">Name</label>
+              <input
+                id="name"
+                class="form-control"
+                type="text"
+                placeholder="Name"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="sr-only">Email</label>
+              <input
+                id="email"
+                class="form-control"
+                type="email"
+                placeholder="Email"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

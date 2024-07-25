@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer demo {
+  body {
+    --min: 1rem;
+    --margin: minmax(var(--min), 1fr);
+    --container: min(100% - var(--min) * 2, 768px);
+
+    display: grid;
+    align-content: center;
+    min-block-size: 100vh;
+    grid-template-columns: var(--margin) var(--container) var(--margin);
+
+    > * {
+      grid-column: 2 / 3;
+    }
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--theme-color-300);
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+}
+
+@layer utilities {
+  .flow > * + * {
+    margin-block-start: var(--flow-space, 1em);
+  }
+}
+
+@layer components {
+  .button {
+    @apply py-2 px-4 rounded border transition-colors;
+
+    background-color: var(--theme-color-900);
+    color: var(--theme-color-100);
+
+    &:where(:hover, :focus-visible) {
+      background-color: hsl(from var(--theme-color-900) h s l / 0.75);
+    }
+  }
+
+  .form-control {
+    @apply py-2 px-4 rounded border w-full;
+
+    background-color: var(--theme-color-200);
+  }
+}
+
+@layer base.theme {
+  @media (prefers-color-scheme: light) {
+    :where(html) {
+      color-scheme: light;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :where(html) {
+      color-scheme: dark;
+    }
+  }
+}
+
+@layer base.theme {
+  :where([data-theme="light"]) {
+    color-scheme: light;
+
+    --theme: light;
+    --theme-invert: 0%;
+
+    --theme-color-100: theme(colors.neutral.100);
+    --theme-color-200: theme(colors.neutral.200);
+    --theme-color-300: theme(colors.neutral.300);
+    /* ... */
+    --theme-color-900: theme(colors.neutral.900);
+  }
+
+  :where([data-theme="dark"]) {
+    color-scheme: dark;
+
+    --theme: dark;
+    --theme-invert: 100%;
+
+    --theme-color-100: theme(colors.neutral.900);
+    --theme-color-200: theme(colors.neutral.800);
+    --theme-color-300: theme(colors.neutral.700);
+    /* ... */
+    --theme-color-900: theme(colors.neutral.100);
+  }
+}
+
+@layer base.normalize {
+  :where(html) {
+    color: var(--theme-color-900);
+    background-color: var(--theme-color-100);
+  }
+}
